@@ -1,1 +1,38 @@
+Secure Data Sharing helps in sharing selected database objects from Snowflake account to other Snowflake accounts
+
+The following database objects of Snowflake can be shared:
+• Tables
+• Secure materialized views
+• Secure UDFs
+• External tables
+• Secure views
+Snowflake enables the sharing of databases through shares, which are created by data providers and consumed by data consumers.
+
+Provider Account - This is the Snowflake account that owns and shares data with other Snowflake accounts. 
+The provider creates and manages the data.  We can share single or multiple databases with Grant Permission on the shared objects from 
+the Database.
+The provider is responsible for the storage costs of the shared data.
+
+Consumer Account – A data consumer  be any (Either Snowflake or Non snowflake) that consume the share made by a data provider.
+ Consumers can query and analyze the shared data for their specific needs. They typically have read-only access to the 
+shared data and are responsible for the compute costs associated with querying that data within their own account.
+
+It is also possible to share data with non-snowflake user, which is done by creating a reader account.
+All compute cost of reader account are billed to provider account.
+
+Reader Acount - Reader Account is meant for Non-Snowflake Data consumers who do not own any snowflake account.
+                Reader accounts are created and maintained by data provider
+
+Like Time Travel and cloning Snowflake Data sharing  is also a metadata operation. During data sharing, 
+no data is moved or copied. Instead shares table and its micro-partition. That way any changes in the source table 
+automatically mirrored in the shared table.
+Secure data sharing can be done in three different ways.
+1.	Direct Share
+2.	Data Marketplace
+3.	Data Exchange
+
+DESCRIBE SHARE <share object> 
+As a Data Cosumer account you can only query data. No re-share it to other accounts and updates to objects not possible
+For data security and privacy reasons, only secure views are supported in shares
+
 
