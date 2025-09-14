@@ -28,9 +28,12 @@ Types of cache in snowflake
 - Join keys
 
 --Micro-partition
+
 Snowflake tables are divided into micro-partitions. Each partition contains 50MB to 500MB of uncompressed data
 Rows in tables are organized in columnar fashion
 
+What are micro-partition?
+Micro-partitions are snowflake's internal data storage format. Snowflake compresses data before storing in micro-partition.
 
 For Micro-parition snowflake stores 
  - Range of values (min/max) values
