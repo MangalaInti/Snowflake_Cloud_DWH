@@ -58,4 +58,26 @@ In general data is sorted or ordered
 Snowflake credits are used to organize the data into correct partitions as it is added to the table.
 Micro-partitions are immutable objects.Once created it is not modified by snowflake rather re-created based on DML operations.
 
+**Materialize views**
+ - A Materialize view (MV) is type view that stores precomputed data based on SELECT query.
+ - Materialized view store the query results physically. This can significantly enchance the query performance especially for complex and frequently run queries
+ - Snowflake automatically updates MV when the underlying data changes, ensuring data remains current
+
+--When should  we go for MV views
+
+Underlaying data or base tale is not changing frequently then we go for MV
+Queries involve complex calculations or aggregations
+It is avaliable only in Enterprise edition
+It comes with certain limitations - Joins (self joins) are not supported
+
+--How are materialized views updated if the underlying data has changed?
+
+Snowflake automatically updates MV when the underlying data changes, ensuring data remains current.
+However, you can also manually refresh MV if needed.
+
+What is the pupose of MV?
+speed up expensive and complex views
+They improve performance also incur additional storage and manintenance cost
+
+
 
