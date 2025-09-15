@@ -1,0 +1,17 @@
+**Snowipe**
+Snowflake support loading of continuous data through a serverless service called Snowpipe
+Snowpipe is serverless and has its own compute capacity, which means Snowpipe doesn’t depend on virtual WH for processing. 
+Compute capacity scaling up and scaling down of a Snowpipe is managed by Snowflake automatically 
+Costs for Snowpipe are charged separately from virtual WH costs
+
+--Snowpipe Data loading steps 
+ 1. Create target table in SDWH (Snowflake DWH)
+ 2. Creating a file format
+ 3. Creating S3 Bucket in AWS storage
+ 4. Creating an external stage in SDWH
+ 5. Creating a Snowpipe in SDWH
+ 6.Configure SQS Notifications
+ 7. Loadin source file to bucket
+ 8. Validate records in target.
+
+**Streams**
