@@ -35,4 +35,22 @@ DESCRIBE SHARE <share object>
 As a Data Cosumer account you can only query data. No re-share it to other accounts and updates to objects not possible
 For data security and privacy reasons, only secure views are supported in shares
 
+**Cloning**
+Cloning or Zero Copy cloning is feature provided by snowflake that  users to clone - Table, Schema, DB & streams without physically copying the data.
+1. Cloning doesn’t require  additional storage, because data is not copied.
+2. Cloning operation is faster as it doesn’t copy the data
+3. Once table is cloned from source table you perform DML operatio, then storge costs will incur
+   Data that is changed in either table is maintained in new micro-partitions specific to that table
+   However as new data is inserted or updates are performed to either table, micro-partitions may be added or removed. 
+   If new micro-partitions are added, then additional storage costs are charged
+
+4. Some objects in Snowflake contain child objects, such as a database containing schemas, which contain tables, which contain table stages:
+   DB -> Schema -> Tables - Stages
+
+When an object is cloned, its children will usually be cloned as well. The exceptions to this rule are:
+External Tables
+Internal Named Stages
+5. 	Snowpipes -  That references an internal named stage are not cloned
+
+
 
