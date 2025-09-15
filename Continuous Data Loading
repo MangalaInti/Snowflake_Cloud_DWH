@@ -15,3 +15,27 @@ Costs for Snowpipe are charged separately from virtual WH costs
  8. Validate records in target.
 
 **Streams**
+1. Stream is DB object which is created over source table
+2. This Stream object tracks all DML operations implemented on the source table
+3. When we try to access the stream object, it return the histroic data in the same shape as the source object 
+   that is the same column names and ordering,  with the following additional columns
+      - METADATA$ACTION
+      - METADATA$ISUPDATE
+      - METADATA$ROW_ID
+
+Streams are used for Change data capture. Streams may be combined with tasks to perform automatic processing of change data.
+
+--- METADATA$ACTION
+Indicates  the DML operation like INSERT, DELETE recorded
+
+--METADATA$ISUPDATE
+Indicates wheather the operation was part of UPDATE stmt . Updates to rows in the source object are represented as pair of DELETE and INSERT records
+in the stream with metadata column METADATA$ISUPDATE value set to TRUE
+
+Note that streams record the differences between two offsets
+if a row is added and then updated in the current offset, the delta change is a new row
+The METADATA$ISUPDATE row records a FALSE value
+
+--METADATA$ROWID 
+Specifies the unique and immutable ID for the row, which can be used to track changes to specific rows over time.
+
