@@ -51,6 +51,9 @@ When an object is cloned, its children will usually be cloned as well. The excep
 External Tables
 Internal Named Stages
 5. 	Snowpipes -  That references an internal named stage are not cloned
+6. Cloning is a metadata opertion -Cloned table is pointed to the exsiting micro-partition via metadata.
+   It shares source table's micro-partition
+
 
 
 
