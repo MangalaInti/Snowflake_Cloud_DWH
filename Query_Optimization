@@ -7,6 +7,7 @@ However some performance inprovements can be considered
 3. Using clustering keys to redistribute data in micro-partitions to achieve better partition purning
 4. Built-in cache mechanisum improve performance behind scenes
 5. Using MV to precompute results of complex, frequently executing queries
+
 Caching helps to improve the query performance  and reduce latency.
 Many SQL engines keeps the frequently accessed data in cache which improves respose time of a query
 
