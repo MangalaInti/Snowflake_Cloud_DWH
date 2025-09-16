@@ -70,5 +70,19 @@ CREATE STREAM customer_changes on table customer
    select customer_email from customer_changes where discount_promo= 'Y' and 
    METADATA$ACTION = 'INSERT' AND METADATA$UPDATE = FALSE;
 
+**TASKS**
+- Snowflake tasks are used to execute a SQL stmt or call a stored procedure on a schedule. 
+
+For Example you can use tasks to refresh data in a table used in a report. 
+Keep aggregated tables up -to-date into snowflake, export data out of snowflake or even perform maintenance actions on  a schedule
+Snowflake can be executed based on  a schedule or triggered manually using EXECUTE TASK command
+Multiple tasks can be connected to perform multiple actions if needed, Also tasks can be used with stream to perform continuous data processing
+
+A task execute any of the following types of SQL code:
+  - Single SQL stmt
+  - call to a Stored Procedure
+  - Procedural Logic using snowflake scripting
+
+- Tasks are combined with streams for continous ELT workflows to process recently changed table rows
 
 
