@@ -15,6 +15,7 @@ Costs for Snowpipe are charged separately from virtual WH costs
  8. Validate records in target.
 
 **Streams**
+Stream tracks any DML operations  made to a table. This process is commonly known as CDC(Change Data Capture)
 1. Stream is DB object which is created over source table
 2. This Stream object tracks all DML operations implemented on the source table
 3. When we try to access the stream object, it return the histroic data in the same shape as the source object 
@@ -38,4 +39,36 @@ The METADATA$ISUPDATE row records a FALSE value
 
 --METADATA$ROWID 
 Specifies the unique and immutable ID for the row, which can be used to track changes to specific rows over time.
+
+--Types of streams
+1. Standard Stream 
+2. Append only stream
+3. Insert Only stream
+
+Standard Stream :- Tracks all DML operation including the table truncation supported for streams on tables, directory tables and views
+Append only stream:- Tracks only Insert operation only, supported for streams on tables, directory tables and views
+Insert Only stream :- Tracks only Insert operation only, supported for streams on tables, directory tables and views
+
+--Stream Steps
+
+1. Create table public.customer
+   ( cust_name string, cust_email string, discount_promo boolean)
+
+2. Create another table discount_list 
+  
+    create table test_streams.public.discount_voucher_list
+    (customer_email string);
+
+3. Next create  stream on customer table
+   
+CREATE STREAM customer_changes on table customer
+
+4. select * from customer_changes
+5. To consume data from a stream, you must query and process the data into another table. 
+
+6. Insert into test_streams.public.discount_voucher_list 
+   select customer_email from customer_changes where discount_promo= 'Y' and 
+   METADATA$ACTION = 'INSERT' AND METADATA$UPDATE = FALSE;
+
+
 
