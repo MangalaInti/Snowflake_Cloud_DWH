@@ -38,3 +38,7 @@ Snowflake is 3 tier archiecure
 --Cloud service Layer 
  could service layer perform several functions such as data sharing, metadata mgmt, query optimization
 
+--Connectors
+Snowflake provides variety of drivers and connectors
+ - SnowSQL - CLI
+ - JDBC, ODBC, Snowflake connector for python
