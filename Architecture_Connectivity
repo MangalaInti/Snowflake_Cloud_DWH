@@ -1,0 +1,37 @@
+Snowflake is an analytical cloud data warehouse, it’s designed primarily for analytical workloads (OLAP)
+
+1. SaaS(Software as a Service) based Datawarehouse
+2. Pay per use - Cloud be monthly,annual or usage based on subscription
+3. MPP(Massive parallel processing) - data will be distributed evenly in all nodes
+4. when user fires a query all nodes will work in parallel
+
+**Architecture**
+It is multi-cluster shared data architecture,  Snowflake is hybrid architecture - mixture of shared-nothing and shared disk 
+     (i.e Shared disk - data is stored on a shared-data (centralized location) storage layer 
+    Shared Layer : All compute nodes access the same centralized storage (cloud object storage like S3
+
+multi-cluster shared data architecture . Data and compute are independent components
+- snowflake storage is unlimited
+- As size of a virtual WH increases, amount of snowflake credit used increases propotionately 
+- A large table in snowflake may contain millions of micro-partitions 
+
+Snowflake is 3 tier archiecure
+ -Data storage : stores data in a compresed, columnar format
+-Query processing : Uses virtual WH for compute resources
+- Cloud services: Manages infrastructure,metadata, security and optimization
+
+--Storage Layer : 
+ 1. Snowflake supports AWS S3 storage  to store its data.
+ 2. Data loaded into snowflake is stored as files on cloud-based object stoage
+ 3. Files stored on cloud storage are immutable, which stored data can't updated once written, but it can only be appended.
+ 4. If any update is required, write as new file
+ 5. As users we can't see actual files and how data is stored
+ 6. In DB we always tend to perform CRUD operations - Files can't be updated  to overcome this snowflake uses concept called micro-partitioning to store  data
+ 7. Snowflake automatically organized into small partitions known as micro-partitions
+ 8.** Micro-partions are immutable, they can't changed once created, therefore inserts, updates, and delete require the creation of new micro- partition
+ 9. Each partion is 50MB to 500MB uncompressed data
+
+--Query Processing 
+ 1. Virtual WH refer to compute clusters in snowflake - used to process queries and load data into snowflake
+ 2. Virtual WH are compute clusters, do not share any memory or CPU resources. Each VWH has dedicated memory & cpu that are not shared with any other VWH
+
