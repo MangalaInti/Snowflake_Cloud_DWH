@@ -1,0 +1,2 @@
+Time Travel : Time travel is data protection feature in snowflake which will help recover historical data from tables.
+              Time travel duration can range from 1 to 90days  
