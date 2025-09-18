@@ -36,7 +36,7 @@ Snowflake is 3 tier archiecure
  2. Virtual WH are compute clusters, do not share any memory or CPU resources. Each VWH has dedicated memory & cpu that are not shared with any other VWH
 
 --Cloud service Layer 
- could service layer perform several functions such as data sharing, metadata mgmt, query optimization
+ could service layer perform several functions such as data sharing, metadata mgmt, query optimization, authentication 
 
 --Connectors
 Snowflake provides variety of drivers and connectors
