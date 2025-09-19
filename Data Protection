@@ -1,6 +1,30 @@
 Time Travel : Time travel is data protection feature in snowflake which will help recover historical data from tables.
-              Time travel duration can range from 1 to 90days  
+              Time travel duration can range from 1 to 90days 
+              Time Travel in snowflake allows historical data to be queried with in defined period
+               e.g Accidental modifications or deletions
 
-Fail Safe : Fail safe storage is an Time travel extension that keeps the data for 7 days after Time travel period has ended. Fail safe
+--AT Clause 
+select * from table AT timestamp => '2023-10-01 12:00:00'
+
+--If you do not know the exact  timestamp => OFFSET
+--How to retrieve records 5 min ago
+select * from table AT (OFFSET => -300)
+
+--EXceute Time Travel on DML queries
+USE BEFORE  syntax with Query ID of DML operation
+Select from table BEFORE (statement => 'queryid')
+
+--UNDROP using Time Travel
+Undrop feature will allow you to reocver the dropped table
+When a table is dropped, its physical data remains on disk marked as deleted in the metadata.
+
+UNDROP = > Tables, Schemas, Databases
+
+Undrop table customer
+
+
+Fail Safe : 
+Fail safe provides additional data protection after time travel has expird. It is done by snowflake team
+Fail safe storage is an Time travel extension that keeps the data for 7 days after Time travel period has ended. Fail safe
 provides addtional data loss  protection. However only snowfalke  support can recover data from Fail safe storage.
 Transient and Temporary tables don't have Fail-safe option
