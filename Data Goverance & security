@@ -1,0 +1,51 @@
+Snowflake supports following security features
+i.	AES 256 encryption of data at rest
+ii.	Tri-secret Secure encryption – Business critical supports this 
+iii.	Key rotation
+
+•	All customer data in in Snowflake is encrypted by default using AES-256 bit
+•	Snowflake managed keys are rotated regularly at 30 day intervals
+•	MFA is enabled for all users by default, however users need to enroll themselves into MFA manually
+•	An Administrator  can disable MFA for a user
+Snowflake support following authentication
+i.	Key pair authentication
+ii.	MFA authentication
+iii.	SSO SAML 2.0 federated authentication - Allow users to authenticate through an external identity provider
+
+--Authorization
+Role-based access control (RBAC)
+Discretory access control (DAC)
+--Hierarchy
+privileges are assigned to roles
+Roles are assigned users
+
+AccountAdmin
+
+securityAdmin            sysadmin
+useradmin                custom_role1
+                         custom_role2 
+  
+AccountAdmin - Has full priviledges - Manage the entire snowflake account
+Public - Least restrictive - All staff
+
+**Column level security :- Apply masking policy to specific columns within table or view
+
+--Mask a SSn
+create masking_policy mask_ssn as(val string) return string
+case when current_role() in ('Authorized_users') then val else 'xxx-xxx-xx' End
+
+**Row Level security - 
+How row-level security used in snowflake
+To control access to specific rows within a table based on user roles 
+
+Row level secutiry - Ensure each dept only access  data the relevant to its role
+           Controls access to specific rows
+
+CREATE ROW ACCESS POLICY brach_policy as(user STRING, branch_id STRING)RETURNS BOOLEAN
+EXISTS (SELECT 1 FROM user_branches where user_braches.user = user and user_branches.branch_id = branch_id)
+Secure Views : Secure views are created by speficying SECURE keyword when creating view
+Network Security - Access only ip's that are allowed. It can be applied at Account level
+
+Compliance standard - SOC2 Type II, SOC1 Type I
+
+PCI DSS - To protect credit card transactions
