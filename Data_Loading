@@ -1,0 +1,22 @@
+--Load CSV file from S3 to Snowflake table
+1. Create target table table  customer in snowflake 
+2. Create file format
+3. Create an external stage in snowflake 
+4. Copy into customer from @ETL_stage
+
+--Load JSON file from S3 into snowflake table1
+1. create table emp_temp ( rj variant)
+2. create STAGE emp_json_stg
+3. Copy into emp_temp from @emp_json_stg
+4. select rj:name, rj:email from emp_temp
+
+**FLATTEN function is used to convert semi-structured data into relational reprsentation
+
+// List files in stage
+LIST @aws_stage;
+
+// Error handling using the ON_ERROR option
+  ON_ERROR = 'CONTINUE';
+  ON_ERROR option = ABORT_STATEMENT (default)
+  ON_ERROR = 'SKIP_FILE';
+VALIDATE = > Helps to validate the file before loading
