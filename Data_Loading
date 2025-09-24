@@ -10,6 +10,19 @@
 3. Copy into emp_temp from @emp_json_stg
 4. select rj:name, rj:email from emp_temp
 
+--UnLoad data Via Named Internal stage
+1. Create file format 
+2. Create named internal stage - create or replace STAGE export_stg
+3. COPY into @export_stg from customer
+4. Login to SNOWSQL - GET @export_stg 'File path'
+
+--Load data into Snowflake from Local or External Stage
+1. Create table in snowflake where you want to load the data
+2. create file format
+3. Create stage - create or replace STAGE IMPORT_stg
+4. Login Snowsql - PUT 'file path' @Import_st
+5. COPY into customer from @Import_stg
+
 **FLATTEN function is used to convert semi-structured data into relational reprsentation
 
 // List files in stage
