@@ -6,3 +6,5 @@ Resource Moniter :
 5. Only AccountAdmin create Resource moniter
 
 Information_Schema is created automatically  for every snowflake DB. It provides metadata information on the objects created in the DB
+Last 365 days history of warehouse credit usage - WAREHOUSE_METERING_HISTORY.ACCOUNT_USAGE
+Data is kept for 365 days in ACCOUNT_USAGE schema
