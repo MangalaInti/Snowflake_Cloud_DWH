@@ -1,1 +1,3 @@
-
+Resource Moniter : 
+1. Resource moniter can track single VWH or group of VWH or entire snowflake account
+2. You can create multiple resource moniter to moniter and manage credit usage at different levels
