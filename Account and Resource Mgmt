@@ -3,3 +3,5 @@ Resource Moniter :
 2. You can create multiple resource moniter to moniter and manage credit usage at different level
 3. RM(Resource moniter) at account level can't control credit usage by serverless features - Snowpipe, Automatic Reclustering, Materialize view  
 4. If a RM moniters a VWH, another RM can't moniter the same VWH
+
+Information_Schema is created for every snowflake DB
