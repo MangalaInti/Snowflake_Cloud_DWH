@@ -1,0 +1,38 @@
+UDF allows you to perform operations that are not available through the built-in, system-defined functions. 
+Create UDF whenever there is a need to repeat the same functionality.
+Snowflake supports 4 languages for writing UDFs.
+SQL
+Java Script
+Java
+Python
+Snowflake UDFs can return scalar(Just a value or a string) and tabular results.
+Snowflake supports UDF overloading means support functions with same name but different params.
+UDF_Calculate_Area() is different from UDF_Calculate_Area(Radius FLOAT) 
+UDF_Calculate_Area(Radius FLOAT) is different from 
+	 UDF_Calculate_Area(Length number, Width Number) 
+
+SCALAR: Returns output for each input we are passing.
+
+create function area_of_circle(radius float)
+  returns float
+  as
+  $$
+      pi() * radius * radius
+  $$
+  ;
+
+Select area_of_circle(4.5);
+
+TABULAR: Can return zero, one or multiple rows.
+
+create function t()
+    returns table(name varchar, age number)
+    as
+    $$
+        select ‘Ravi’ , 34
+        union
+        select ‘Latha’ , 27
+        union
+        select ‘Madhu’, 25
+$$
+
