@@ -24,6 +24,8 @@ create function area_of_circle(radius float)
 Select area_of_circle(4.5);
 
 TABULAR: Can return zero, one or multiple rows.
+create table UDFs that return zero, one, or several rows for each input, with each result row containing multiple columns. 
+UDTFs are another name for user-defined table functions.
 
 create function t()
     returns table(name varchar, age number)
