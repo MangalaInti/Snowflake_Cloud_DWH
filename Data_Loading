@@ -33,3 +33,7 @@ LIST @aws_stage;
   ON_ERROR option = ABORT_STATEMENT (default)
   ON_ERROR = 'SKIP_FILE';
 VALIDATE = > Helps to validate the file before loading
+
+--Data Loading and Unloading
+The external table functionality enables you to query external data like a standard table. External tables may be joined to other tables, 
+and views may be created using them.
