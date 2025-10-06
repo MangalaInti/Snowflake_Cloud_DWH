@@ -49,3 +49,16 @@ Network Security - Access only ip's that are allowed. It can be applied at Accou
 Compliance standard - SOC2 Type II, SOC1 Type I
 
 PCI DSS - To protect credit card transactions
+
+
+--Security Standards
+Snowflake is compliant with the following security and financial standards.
+· IRAP Protected
+· ITAR
+· FedRAMP Moderate
+· GxP
+· SOC 1 Type II
+· SOC 2 Type II
+· PCI-DSS
+· HITRUST / HIPAA
+· ISO/IEC 27001
