@@ -22,6 +22,11 @@ Types of cache in snowflake
  3. Virtual warehouse Local Disk cache
 
 
+Query result cache : -
+When Snowflake runs a query, it caches the results of that query. The stored result is known as query cache.
+if the same query is executed, there have been no changes to the data in the tables being queried. 
+Result cache will valid for 24 hrs
+The query history page can show the history of queries executed in the last 14 days.
 
 --What is a cluster key
 -subset of rows to locate the data in micro-partition.
@@ -59,6 +64,9 @@ In general data is sorted or ordered
 Snowflake credits are used to organize the data into correct partitions as it is added to the table.
 Micro-partitions are immutable objects.Once created it is not modified by snowflake rather re-created based on DML operations.
 
+--Determination Clustering keys
+frequently used in the WHERE clause or other selective filters. Additionally, columns that are used for joining can also be considered
+
 **Materialize views**
  - A Materialize view (MV) is type view that stores precomputed data based on SELECT query.
  - Materialized view store the query results physically. This can significantly enchance the query performance especially for complex and frequently run queries
@@ -79,6 +87,29 @@ However, you can also manually refresh MV if needed.
 What is the pupose of MV?
 speed up expensive and complex views
 They improve performance also incur additional storage and manintenance cost
+
+--Partition pruning
+It Partition pruning is an optimization technique, where Snowflake can eliminate unneeded partitions while executing a query.
+This process of eliminating  unneeded micro-partitions is also known as partition pruning
+ --How to enable pruning
+   1. Use Filter conditions on the columns that are frequently queried
+   
+
+
+--Virtual WH
+The following strategies may be applied to improve the performance of a virtual warehouse.
+1. Reduce queuing
+2. Resolve memory spillage.
+3. Increase warehouse size.
+4. Try query acceleration.
+5. Optimize the warehouse cache.
+6. Limit concurrently running queries.
+
+
+--Elastic Compute
+Multi-cluster virtual warehouses are utilized when the number of concurrent users exceeds a single virtual warehouse's capacity. 
+When the concurrent workload for a virtual warehouse reaches the maximum, new queries are queued. Multi-cluster virtual warehouses address 
+this by adding clusters as needed. When the demand drops, the extra clusters are removed.
 
 
 
