@@ -35,6 +35,7 @@ Rows in tables are organized in columnar fashion
 
 What are micro-partition?
 Micro-partitions are snowflake's internal data storage format. Snowflake compresses data before storing in micro-partition.
+micro-partitions are immutable and new or changed data must be added to a new micro-partition
 
 For Micro-parition snowflake stores 
  - Range of values (min/max) values
