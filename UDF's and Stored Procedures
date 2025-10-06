@@ -38,3 +38,11 @@ create function t()
         select ‘Madhu’, 25
 $$
 
+
+--UDF's 
+Secure UDF does not use specific SQL optimizations.
+Secure UDFs don't allow unauthorized users to see the UDF definition.
+
+--sp
+A stored procedure can also return a single value or tabular data if desired; however, 
+it is not a requirement that a stored procedure must return a value.
