@@ -1,0 +1,2 @@
+--2nd most recent query executed
+SELECT LAST_QUERY_ID(-2);
