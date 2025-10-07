@@ -2,11 +2,13 @@
 Snowflake doesnt require much of query tuning because of its unique architecture and micro-partition storage mechanism
 However some performance inprovements can be considered
 
-1. Scaling up the size of virtual WH to provide more processing power for complex queries
-2. Scale out on multi-cluster VwH to provide more capacity for handling many concurrent users and concurrent queries
+1. Scaling up the size of virtual WH (vertically) to provide more processing power for complex queries
+2. Scale out (Horizontally) on multi-cluster VwH to provide more capacity for handling many concurrent users and concurrent queries
 3. Using clustering keys to redistribute data in micro-partitions to achieve better partition purning
 4. Built-in cache mechanisum improve performance behind scenes
 5. Using MV to precompute results of complex, frequently executing queries
+6. Scaling down means resizing the virtual warehouse to a smaller size. Typically a virtual warehouse is scaled down as a response 
+   to decreased query complexity.   Nodes are de-provisioned when a virtual warehouse is scaled down.
 
 Caching helps to improve the query performance  and reduce latency.
 Many SQL engines keeps the frequently accessed data in cache which improves respose time of a query
@@ -27,6 +29,12 @@ When Snowflake runs a query, it caches the results of that query. The stored res
 if the same query is executed, there have been no changes to the data in the tables being queried. 
 Result cache will valid for 24 hrs
 The query history page can show the history of queries executed in the last 14 days.
+
+ Metadata Cache :- 
+Statistics are kept in the metadata cache in the cloud services layer for each table, micro-partition, and column. 
+The metadata cache can return results if the query simply counts the number of rows.
+
+Metadata cache or cloud services operations do not require an active virtual warehouse. 
 
 --What is a cluster key
 -subset of rows to locate the data in micro-partition.
@@ -66,6 +74,7 @@ Micro-partitions are immutable objects.Once created it is not modified by snowfl
 
 --Determination Clustering keys
 frequently used in the WHERE clause or other selective filters. Additionally, columns that are used for joining can also be considered
+column with lower cardinality value is best choice for clustering key e.g Gender column(M, F)
 
 **Materialize views**
  - A Materialize view (MV) is type view that stores precomputed data based on SELECT query.
