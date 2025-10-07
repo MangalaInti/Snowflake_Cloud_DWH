@@ -97,9 +97,7 @@ What is the pupose of MV?
 speed up expensive and complex views
 They improve performance also incur additional storage and manintenance cost
 
--Secure Views
-You may create a secure view if you need to share data from many tables in separate databases. 
-Because several databases cannot be added to a single share, Snowflake suggests creating secure views within a single database and sharing that database.
+
 
 
 --Partition pruning
