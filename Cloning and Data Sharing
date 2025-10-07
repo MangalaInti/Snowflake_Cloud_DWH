@@ -54,6 +54,10 @@ Internal Named Stages
 6. Cloning is a metadata opertion -Cloned table is pointed to the exsiting micro-partition via metadata.
    It shares source table's micro-partition
 
+-Secure Views
+You may create a secure view if you need to share data from many tables in separate databases. 
+Because several databases cannot be added to a single share, Snowflake suggests creating secure views within a single database and sharing that database.
+
 
 
 
