@@ -19,6 +19,8 @@ Snowflake is 3 tier archiecure
  -Data storage : stores data in a compresed, columnar format
 -Query processing : Uses virtual WH for compute resources
 - Cloud services: Manages infrastructure,metadata, security and optimization
+- Statistics are kept in metadata cache in cloud service layer - No: of rows in table, Table Definision(DESCRIBLE TABLE),
+  Metadata cache or cloud service layer do not require active VWH
 
 --Storage Layer : 
  1. Snowflake supports AWS S3 storage  to store its data.
