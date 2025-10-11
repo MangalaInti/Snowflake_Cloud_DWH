@@ -18,6 +18,9 @@ multi-cluster shared data architecture . Data and compute are independent compon
 Snowflake is 3 tier archiecure
  -Data storage : stores data in a compresed, columnar format
 -Query processing : Uses virtual WH for compute resources
+ 1. scaling down VWH means resizing the VWH to small size
+ 2. Typically a VWH is scaled down when as a response to decrease the query complexity.
+
 - Cloud services: Manages infrastructure,metadata, security and optimization
 - Statistics are kept in metadata cache in cloud service layer - No: of rows in table, Table Definision(DESCRIBLE TABLE),
   Metadata cache or cloud service layer do not require active VWH
