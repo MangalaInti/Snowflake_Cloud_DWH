@@ -62,3 +62,11 @@ Snowflake is compliant with the following security and financial standards.
 · PCI-DSS
 · HITRUST / HIPAA
 · ISO/IEC 27001
+
+--Security
+1. USERADMIN role is dedicated solely to USER and Role mgmt. It priviledges to CREATE USER and CREATE ROLE.
+2. USERADMIN can't manage Grants, it is job of SECURITYADMIN
+3. ORGADMIN role is use to create new snowflake account.
+4. SYSADMIN role can create - DB, Tables, views, VWH
+
+
