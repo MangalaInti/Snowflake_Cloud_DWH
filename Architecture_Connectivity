@@ -10,6 +10,12 @@ It is multi-cluster shared data architecture,  Snowflake is hybrid architecture 
      (i.e Shared disk - data is stored on a shared-data (centralized location) storage layer 
     Shared Layer : All compute nodes access the same centralized storage (cloud object storage like S3
 
+Storage layer: All data is stored in centralized, shared layer
+compute layer: VWH are independent computer clusters that process queries
+Virtual warehouses do not store data - they only process it.
+The VWH are independent of each other but access and process the same shared data
+User have no access to the underlying recources of a VWH
+
 multi-cluster shared data architecture . Data and compute are independent components
 - snowflake storage is unlimited
 - As size of a virtual WH increases, amount of snowflake credit used increases propotionately 
