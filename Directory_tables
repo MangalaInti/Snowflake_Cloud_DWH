@@ -1,0 +1,10 @@
+A Directory table which we can enable on External/Internal named stages. It is not a DB object.
+It kind of getting the metadata information
+
+CREATE STAGE INT_STAGE
+DIRECTORY = (ENABLE = TRUE)
+
+SELECT * FROM DIRECTORY(@INT_STAGE)
+
+--Refresh Directory Tables
+ALTER STAGE INT_STAGE REFRESH;
