@@ -3,6 +3,7 @@ Snowflake support loading of continuous data through a serverless service called
 Snowpipe is serverless and has its own compute capacity, which means Snowpipe doesn’t depend on virtual WH for processing. 
 Compute capacity scaling up and scaling down of a Snowpipe is managed by Snowflake automatically 
 Costs for Snowpipe are charged separately from virtual WH costs
+Snowpipe can load data from internal and external stage
 
 --Snowpipe Data loading steps 
  1. Create target table in SDWH (Snowflake DWH)
