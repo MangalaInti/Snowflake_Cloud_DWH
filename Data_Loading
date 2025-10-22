@@ -37,3 +37,5 @@ VALIDATE = > Helps to validate the file before loading
 --Data Loading and Unloading
 The external table functionality enables you to query external data like a standard table. External tables may be joined to other tables, 
 and views may be created using them.
+
+--When loading the data using COPY command complex transformation such as joins, filters, aggregation and use of FLATTEN are not supported
