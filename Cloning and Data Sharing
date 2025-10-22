@@ -58,6 +58,10 @@ Internal Named Stages
 You may create a secure view if you need to share data from many tables in separate databases. 
 Because several databases cannot be added to a single share, Snowflake suggests creating secure views within a single database and sharing that database.
 
+--Data Sharing
+Data consumers cannot re-share database objects
+Due to Data security requirements VPS does not support secure data sharing
+
 
 
 
