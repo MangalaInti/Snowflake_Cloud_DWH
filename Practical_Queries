@@ -1,2 +1,8 @@
 --2nd most recent query executed
 SELECT LAST_QUERY_ID(-2);
+
+--SHOW TABLES LIKE '%CUSTOMER%'
+- DESCRIBE TABLE SNOWFLAKE_SAMPLE_DATA.CUSTOMER;
+--show contents of my stage
+   LIST@ my_stage OR ls my_stage
+
