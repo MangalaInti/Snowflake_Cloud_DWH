@@ -58,6 +58,11 @@ For Micro-parition snowflake stores
 --How does micro-partition work
 Cloud service will store metadata like min, max, distinct values and number of records for each partition
 
+--MV
+MV can be created on top of external tables to improve their query performance.
+Compute : background maintenance is performed on MV to keep them up date with their base table
+Storage : Each MV stores its query result, adding to monhtly storage usage of an account
+
 
 --Clustering
 Clustering represents the way data is grouped together and stored within Snowflake's micro-partitions. It is a subset of snowflake table
