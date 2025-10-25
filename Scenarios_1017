@@ -1,1 +1,6 @@
-
+1. Describes the behavior of a materialized view when columns are changed or dropped from the base table?
+  - You must re-create the materialized view if you want to use it again.
+  - The materialized view is suspended.
+   When columns are changed or dropped from a base table with a materialized view on top, the change is not propagated to the 
+   materialized view. The materialized view is suspended and can NOT be resumed. It must be re-created with the corrected definition 
+  that reflects the changed/dropped columns.
