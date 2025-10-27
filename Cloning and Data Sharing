@@ -61,6 +61,7 @@ Because several databases cannot be added to a single share, Snowflake suggests 
 --Data Sharing
 Data consumers cannot re-share database objects
 Due to Data security requirements VPS does not support secure data sharing
+ Any Snowflake account can consume or publish data to the Snowflake Marketplace.
 
 
 
