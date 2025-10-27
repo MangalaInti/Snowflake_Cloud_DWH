@@ -4,3 +4,15 @@
    When columns are changed or dropped from a base table with a materialized view on top, the change is not propagated to the 
    materialized view. The materialized view is suspended and can NOT be resumed. It must be re-created with the corrected definition 
   that reflects the changed/dropped columns.
+
+2. A virtual warehouse is in a running state and is executing a complex query. The administrator increases the size of the virtual warehouse. What best describes the impact on the running query and any future queries?
+ - Only future queries can take advantage of the increased size.
+ - There is no impact on the running query.
+
+3. multi-cluster virtual warehouse in auto-scale mode
+
+   - When you start a multi-cluster virtual warehouse in auto-scaling mode
+      1. Multi-cluster virtual warehouses support the same properties and actions as regular virtual warehouses. 
+         They can be suspended, resumed, and modified to a different size.
+      2. When Snowflake detects that queries are beginning to queue, additional warehouses are started.
+      3. When the query demand decreases, warehouses are progressively shut down.
