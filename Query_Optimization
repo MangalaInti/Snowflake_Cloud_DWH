@@ -30,6 +30,13 @@ if the same query is executed, there have been no changes to the data in the tab
 Result cache will valid for 24 hrs
 The query history page can show the history of queries executed in the last 14 days.
 
+--Query cache result
+
+If a query result cache is not reused within 24 hours, it is purged.
+The maximum number of days a query result cache can be retained is 31.
+The cloud services layer stores the query result cache.
+The query result cache is used if an identical query is run within 24 hours of the original query.
+
  Metadata Cache :- 
 Statistics are kept in the metadata cache in the cloud services layer for each table, micro-partition, and column. 
 The metadata cache can return results if the query simply counts the number of rows.
@@ -111,7 +118,9 @@ This process of eliminating  unneeded micro-partitions is also known as partitio
  --How to enable pruning
    1. Use Filter conditions on the columns that are frequently queried
    
-
+Partition pruning occurs when the number of Partitions scanned is much smaller than Partitions total. 
+If the partitions scanned equal the partition total, the query scanned the complete table. 
+Therefore, no partition pruning happened, and the clustering key should be improved.
 
 --Virtual WH
 The following strategies may be applied to improve the performance of a virtual warehouse.
@@ -128,5 +137,25 @@ Multi-cluster virtual warehouses are utilized when the number of concurrent user
 When the concurrent workload for a virtual warehouse reaches the maximum, new queries are queued. Multi-cluster virtual warehouses address 
 this by adding clusters as needed. When the demand drops, the extra clusters are removed.
 
+--Search Optimization
+The search optimization service is a Snowflake-managed service.
+The search optimization works in the background and updates the search access paths when the underlying table data changes.
 
+5. From a cardinality (number of distinct values) perspective, which columns should you consider adding to a clustering key?
+
+Columns that have large enough distinct values to enable efficient partition pruning.
+Columns that have small enough distinct values to enable efficient grouping in micro-partition.
+
+--Overall explanation
+When defining clustering keys, the initial candidate clustering columns are those columns that are frequently used in the 
+WHERE clause or other selective filters. Additionally, columns that are used for joining can also be considered. Furthermore, 
+the columns' cardinality (number of distinct values) is also important. It is crucial to choose a column with a 
+high enough cardinality to allow effective partition pruning while having a low enough cardinality for Snowflake to group data into micro-partitions efficiently. 
+A column with too few distinct values (e.g., gender) will result in minimal partition pruning. On the other hand, a column that has too many distinct values 
+(e.g., customer id) will result in too much overhead when maintaining the partitions. When creating a multi-column cluster key, order the columns 
+from the lowest cardinality to the higher cardinality; otherwise, the effectiveness of clustering will be reduced. 
+
+Which of the following layers is responsible for query optimization and dispatching?
+
+The cloud services layer is responsible for query planning and optimization. The actual query processing is performed by virtual warehouses.
 
