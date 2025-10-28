@@ -6,3 +6,5 @@ SELECT LAST_QUERY_ID(-2);
 --show contents of my stage
    LIST@ my_stage OR ls my_stage
 
+1. WAREHOUSE_METERING_HISTORY.ACCOUNT_USAGE => Provides info of last 365 days
+2. SNOWFLAKE.ACCOUNT_USAGE.LOGIN_HISTORY =>  who logged into snowflake inn last 365 days
