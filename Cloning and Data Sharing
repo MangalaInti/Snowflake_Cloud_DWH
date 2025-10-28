@@ -7,6 +7,7 @@ The following database objects of Snowflake can be shared:
 • External tables
 • Secure views
 Snowflake enables the sharing of databases through shares, which are created by data providers and consumed by data consumers.
+Only the ACCOUNTADMIN role or roles specifically granted the CREATE SHARE privilege can create a share.
 
 Provider Account - This is the Snowflake account that owns and shares data with other Snowflake accounts. 
 The provider creates and manages the data.  We can share single or multiple databases with Grant Permission on the shared objects from 
@@ -34,6 +35,12 @@ Secure data sharing can be done in three different ways.
 DESCRIBE SHARE <share object> 
 As a Data Cosumer account you can only query data. No re-share it to other accounts and updates to objects not possible
 For data security and privacy reasons, only secure views are supported in shares
+
+--Consumer Account
+Consumer accounts can only access and query data but cannot add, modify, or create database objects to a shared database.
+Consumer accounts cannot clone a shared database, its schemas, or any of its tables.
+Consumer accounts cannot use Time Travel on the shared data.
+Consumer accounts cannot further share a shared database.
 
 **Cloning**
 Cloning or Zero Copy cloning is feature provided by snowflake that  users to clone - Table, Schema, DB & streams without physically copying the data.
